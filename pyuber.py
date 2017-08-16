@@ -12,7 +12,10 @@ pyMap = [
 ]
 
 class PyUber():
-    
+    ''' 
+        The x cord represent the row of the matrics
+        while the y cord represent the column
+    '''
     car = 'C'
     passenger = 'P'
     destination = 'D'
@@ -27,6 +30,7 @@ class PyUber():
         self.printPosition()
 
     def pickUpPassenger(self, position):
+         ''' This method picks the passenger from the specified loaction '''
         self.px = position[0]
         self.py = position[1]
         self.insertNewPos(self.px, self.py, PyUber.passenger)
@@ -34,6 +38,7 @@ class PyUber():
         print('dropped passenger... ')
     
     def dropPassenger(self, position):
+        ''' This method drop the passenger to the specified loaction '''
         self.px = position[0]
         self.py = position[1]
         self.insertNewPos(self.px, self.py, PyUber.destination)
@@ -41,10 +46,11 @@ class PyUber():
         print('dropped passenger... ')
     
     def __drive(self, px, py):
+        ''' This method move the car to the destinatin specified '''
         while (self.car_cord_x != px or self.car_cord_y != py):
             prev_x = self.car_cord_x
             prev_y = self.car_cord_y
-            self.get_x_cord(px)
+            self.get_x_cord(px)   
             self.get_y_cord(py)
             self.clearPos(prev_x,prev_y)    
             self.insertNewPos(self.car_cord_x, self.car_cord_y, PyUber.car)
@@ -53,13 +59,15 @@ class PyUber():
                     
 
     def insertNewPos(self, x_cord, y_cord , data):
+        ''' This method place the object on the matric map'''
         self.pymap[x_cord][y_cord] = data
 
     def clearPos(self, x_cord, y_cord):
+        ''' This method clear the previous location of the car '''
         self.pymap[x_cord][y_cord] = '_'
 
     def get_x_cord(self, px):
-        
+        ''' This method calculate the x cordinate '''
         if self.car_cord_x > px:
                 self.car_cord_x -= 1
         elif self.car_cord_x < px:
@@ -68,7 +76,7 @@ class PyUber():
         return self.car_cord_x
 
     def get_y_cord(self, py):
-            
+        ''' This method calculate the y cordinate '''
         if self.car_cord_y > py:
                 self.car_cord_y -= 1
         elif self.car_cord_y < py:
