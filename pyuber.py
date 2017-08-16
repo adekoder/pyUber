@@ -30,7 +30,7 @@ class PyUber():
         self.printPosition()
 
     def pickUpPassenger(self, position):
-         ''' This method picks the passenger from the specified loaction '''
+        ''' This method picks the passenger from the specified loaction '''
         self.px = position[0]
         self.py = position[1]
         self.insertNewPos(self.px, self.py, PyUber.passenger)
